@@ -1,0 +1,25 @@
+#version 330
+layout(location=0) in vec4 triangle;
+layout(location=1) in vec3 mixedColors;
+layout(location=2) in vec3 normals;
+
+out vec3 singleEdgeColor;
+out vec3 normal;
+out vec3 coord_p;
+
+uniform mat4 rotationMatrix;
+uniform mat4 projectionMatrix;
+
+void main(){
+
+    singleEdgeColor = mixedColors;
+
+    normal = inverse(transpose(mat3(rotationMatrix))) * normals;
+
+    coord_p = vec3(rotationMatrix * triangle);
+
+    // wird für jede Ecke aufgerufen --> im FS für jeden PIXEL!!
+
+    gl_Position = projectionMatrix * rotationMatrix * vec4(triangle);
+
+}
