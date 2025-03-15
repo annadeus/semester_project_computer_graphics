@@ -1,4 +1,4 @@
-## Semester Project in Computer Grafics
+## Semester Project in Computer Graphics
 
 In order to pass, the project was supposed to have the the following features:
 
